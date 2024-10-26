@@ -1,0 +1,53 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Roboto", serif;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+:root {
+  --color-basic-neutral-10: #1e1e1e;
+  --color-basic-neutral-40: #606060;
+  --color-basic-neutral-50: #7c7c7c;
+  --color-basic-neutral-60: #959595;
+  --color-basic-neutral-70: #b0b0b0;
+  --color-basic-neutral-black: #000000;
+  --color-basic-neutral-white: #ffffff;
+
+  --color-basic-blue-60: #7f93d4;
+  --color-basic-blue-70: #9eafe4;
+  --color-basic-blue-80: #bbc6eb;
+
+  --color-basic-green-40: #0e7b3b;
+  --color-basic-green-50: #1e973f;
+  --color-basic-green-60: #39b44a;
+  --color-basic-green-70: #74c681;
+
+  --color-basic-red-50: #e72827;
+  --color-basic-red-60: #fe5653;
+  --color-basic-red-70: #fc8a82;
+
+  --spacing-half: 0.5rem;
+  --spacing-three-quarters: 0.75rem;
+  --spacing-one: 1rem;
+  --spacing-one-and-quarter: 1.25rem;
+  --spacing-one-and-half: 1.5rem;
+  --spacing-two: 2rem;
+  --spacing-two-and-half: 2.5rem;
+  --spacing-three: 3rem;
+}
