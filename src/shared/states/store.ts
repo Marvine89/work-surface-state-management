@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import PanelReducer from "./panel.slice";
 import surfaceMapReducer from "./maps.slice";
-import workSurfaceSlice from "./work-surface.slice";
+import workSurfaceReducer from "./work-surface.slice";
 
 export const AppStore = configureStore({
   reducer: {
+    panel: PanelReducer,
     map: surfaceMapReducer,
-    workSurface: workSurfaceSlice,
+    workSurface: workSurfaceReducer,
   },
 });
 

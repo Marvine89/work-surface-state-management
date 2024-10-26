@@ -16,6 +16,7 @@ import { SurfaceFeature, WorkSurface } from "@shared/interfaces";
 import { setFilterFeatures } from "@states/maps.slice";
 import { removedFeatureSelector } from "@states/selectors";
 import { setSelectedFeature } from "@states/work-surface.slice";
+import { openRightPanel } from "@states/panel.slice";
 import { hasFeature } from "@/shared/utils";
 import "./proposal-block.scss";
 
@@ -43,6 +44,7 @@ export function ProposalBlock({ data, proposalId }: ProposalBlockProps) {
 
   const viewFeature = (feature: SurfaceFeature) => {
     dispatch(setSelectedFeature(feature));
+    dispatch(openRightPanel());
   };
 
   return (

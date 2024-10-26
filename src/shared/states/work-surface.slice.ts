@@ -22,11 +22,8 @@ export const workSurfaceSlice = createSlice({
     setSelectedFeature: (state, action: PayloadAction<SurfaceFeature>) => {
       state.selectedFeature = action.payload;
     },
-    clearFeatureSelection: (state) => {
-      state.selectedFeature = null;
-    },
   },
 });
 
-export const { setSurfaces, setSelectedFeature, clearFeatureSelection } = workSurfaceSlice.actions;
+export const { setSurfaces, setSelectedFeature } = workSurfaceSlice.actions;
 export default workSurfaceSlice.reducer;
