@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import {  WorkSurface } from "../interfaces";
+import { SurfaceFeature, WorkSurface } from "../interfaces";
 
 export interface WorkSurfaceState {
   workSurfaces: WorkSurface[];
+  selectedFeature: SurfaceFeature | null;
 }
 
 const initialState: WorkSurfaceState = {
   workSurfaces: [],
+  selectedFeature: null,
 };
 
 export const workSurfaceSlice = createSlice({
@@ -17,8 +19,11 @@ export const workSurfaceSlice = createSlice({
     setSurfaces: (state, action: PayloadAction<WorkSurface[]>) => {
       state.workSurfaces = [...action.payload];
     },
+    setSelectedFeature: (state, action: PayloadAction<SurfaceFeature>) => {
+      state.selectedFeature = action.payload;
+    },
   },
 });
 
-export const { setSurfaces } = workSurfaceSlice.actions;
+export const { setSurfaces, setSelectedFeature } = workSurfaceSlice.actions;
 export default workSurfaceSlice.reducer;

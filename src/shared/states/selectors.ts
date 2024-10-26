@@ -26,4 +26,10 @@ export const geometrySelector = (app: AppState) => {
   });
 };
 
-export const featureSelector = (app: AppState) => app.feature.feature;
+export const rightPanelSelector = (app: AppState) => app.panel.rightPanelOpen;
+
+export const featureCoordinatesSelector = (app: AppState) =>
+  app.workSurface.selectedFeature?.geometry.coordinates[0];
+
+export const featurePropertySelector = (app: AppState) =>
+  app.workSurface.selectedFeature?.properties ?? {};

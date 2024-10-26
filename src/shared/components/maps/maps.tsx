@@ -15,8 +15,6 @@ export function Maps() {
     if (position) mapRef.current?.setView(position, 15);
   }, [position]);
 
-  console.log(geometryList);
-
   return (
     <section className="map-block">
       <MapContainer

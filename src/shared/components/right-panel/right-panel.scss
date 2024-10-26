@@ -66,4 +66,10 @@
     font-weight: 200;
     flex: 1;
   }
+
+  &__empty-value {
+    @include m.open-sans;
+    font-weight: 200;
+    margin: var(--spacing-half) 0;
+  }
 }

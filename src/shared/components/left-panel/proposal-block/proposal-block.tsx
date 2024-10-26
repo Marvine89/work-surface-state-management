@@ -6,12 +6,17 @@ import {
   AccordionSummary,
   Checkbox,
   FormControlLabel,
+  IconButton,
   ListItemButton,
+  Tooltip,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { SurfaceFeature, WorkSurface } from "@shared/interfaces";
 import { setFilterFeatures } from "@states/maps.slice";
 import { removedFeatureSelector } from "@states/selectors";
+import { setSelectedFeature } from "@states/work-surface.slice";
+import { openRightPanel } from "@states/panel.slice";
 import { hasFeature } from "@/shared/utils";
 import "./proposal-block.scss";
 
@@ -37,6 +42,11 @@ export function ProposalBlock({ data, proposalId }: ProposalBlockProps) {
     [removedFeatures]
   );
 
+  const viewFeature = (feature: SurfaceFeature) => {
+    dispatch(setSelectedFeature(feature));
+    dispatch(openRightPanel());
+  };
+
   return (
     <Accordion
       expanded={expanded}
@@ -60,6 +70,15 @@ export function ProposalBlock({ data, proposalId }: ProposalBlockProps) {
               label={`${feature.type} - ${feature.id}`}
               labelPlacement="end"
             />
+
+            <Tooltip title="View feature" placement="right">
+              <IconButton
+                aria-label="view"
+                onClick={() => viewFeature(feature)}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            </Tooltip>
           </ListItemButton>
         ))}
       </AccordionDetails>

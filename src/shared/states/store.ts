@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import FeatureSlice from "./feature.slice";
+import PanelReducer from "./panel.slice";
 import surfaceMapReducer from "./maps.slice";
-import workSurfaceSlice from "./work-surface.slice";
+import workSurfaceReducer from "./work-surface.slice";
 
 export const AppStore = configureStore({
   reducer: {
+    panel: PanelReducer,
     map: surfaceMapReducer,
-    feature: FeatureSlice,
-    workSurface: workSurfaceSlice,
+    workSurface: workSurfaceReducer,
   },
 });
 
