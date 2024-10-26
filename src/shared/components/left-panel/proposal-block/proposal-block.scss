@@ -1,9 +1,12 @@
 .proposal-block {
   &__item-button {
-    padding-right: 0 !important; // override material-ui padding
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-one);
   }
 
   &__checkbox {
+    flex: 1;
     width: 100% !important; // override material-ui width
     height: 100% !important; // override material-ui height
   }
