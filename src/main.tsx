@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { MainPage } from "./pages";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 async function prepareMock() {
   if (process.env.NODE_ENV !== "development") return;
@@ -15,10 +16,14 @@ prepareMock()
     console.error("Failed to initialize the app", error);
   });
 
+const queryClient = new QueryClient();
+
 function renderApp() {
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <MainPage />
+      <QueryClientProvider client={queryClient}>
+        <MainPage />
+      </QueryClientProvider>
     </StrictMode>
   );
 }

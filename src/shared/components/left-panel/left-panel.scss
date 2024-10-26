@@ -2,11 +2,17 @@
 
 .left-panel {
   @include m.side-panel;
+  overflow: hidden;
   left: var(--spacing-one);
 
   &__title {
     @include m.open-sans;
     margin-bottom: var(--spacing-one-and-half);
     color: var(--color-basic-neutral-white);
+  }
+
+  &__body {
+    flex: 1;
+    overflow: hidden auto;
   }
 }
