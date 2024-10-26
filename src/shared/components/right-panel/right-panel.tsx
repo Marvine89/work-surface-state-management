@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Chip, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,14 +15,13 @@ import {
   featurePropertySelector,
   rightPanelSelector,
 } from "@states/selectors";
-import "./right-panel.scss";
-import { useEffect } from "react";
+import styles from "./right-panel.module.scss";
 
 export function RightPanel() {
   const dispatch = useDispatch();
   const rightPanel = useSelector(rightPanelSelector);
   const cordinates = useSelector(featureCoordinatesSelector);
-  const properties = useSelector(featurePropertySelector);
+  const properties = useSelector(featurePropertySelector) || {};
   const propertyKeys = Object.keys(properties);
 
   const sidePanelAnimate = useSpring({
@@ -42,8 +42,8 @@ export function RightPanel() {
   }, [cordinates?.length, transRef]);
 
   return (
-    <animated.aside style={sidePanelAnimate} className="right-panel">
-      <div className="right-panel__header">
+    <animated.aside style={sidePanelAnimate} className={styles["right-panel"]}>
+      <div className={styles["right-panel__header"]}>
         <h3>Selected Solution</h3>
 
         <IconButton
@@ -51,16 +51,16 @@ export function RightPanel() {
           color="warning"
           onClick={() => dispatch(closeRightPanel())}
         >
-          <CloseIcon className="right-panel__header-icon" />
+          <CloseIcon className={styles["right-panel__header-icon"]} />
         </IconButton>
       </div>
 
       {transitions((style) => (
-        <animated.div className="right-panel__body" style={style}>
-          <div className="right-panel__coordinates">
+        <animated.div className={styles["right-panel__body"]} style={style}>
+          <div className={styles["right-panel__coordinates"]}>
             <h4>Coordinates</h4>
 
-            <div className="right-panel__coordinate-list">
+            <div className={styles["right-panel__coordinate-list"]}>
               {cordinates?.map((cord, i) => (
                 <Chip
                   key={i}
@@ -69,7 +69,7 @@ export function RightPanel() {
                   variant="outlined"
                   icon={
                     <LocationOnIcon
-                      className="right-panel__coordinate-icon"
+                      className={styles["right-panel__coordinate-icon"]}
                       fontSize="small"
                     />
                   }
@@ -78,22 +78,27 @@ export function RightPanel() {
             </div>
           </div>
 
-          <div className="right-panel__properties">
+          <div className={styles["right-panel__properties"]}>
             <h4>Properties</h4>
 
             {propertyKeys.length ? (
               propertyKeys.map((key, i) => (
-                <div className="right-panel__properties-list" key={i}>
-                  <div key={key} className="right-panel__properties-row">
-                    <div className="right-panel__properties-key">{key}</div>
-                    <div className="right-panel__properties-value">
+                <div className={styles["right-panel__properties-list"]} key={i}>
+                  <div
+                    key={key}
+                    className={styles["right-panel__properties-row"]}
+                  >
+                    <div className={styles["right-panel__properties-key"]}>
+                      {key}
+                    </div>
+                    <div className={styles["right-panel__properties-values"]}>
                       {properties[key]}
                     </div>
                   </div>
                 </div>
               ))
             ) : (
-              <p className="right-panel__empty-value">
+              <p className={styles["right-panel__empty-value"]}>
                 No properties available
               </p>
             )}

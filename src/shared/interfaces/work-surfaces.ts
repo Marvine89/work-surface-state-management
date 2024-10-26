@@ -1,3 +1,5 @@
+import type { LatLngBoundsLiteral } from "leaflet";
+
 export interface WorkSurfaceResponse {
   type: string;
   features: SurfaceFeatureResponse[];
@@ -29,3 +31,8 @@ export interface SurfaceGeometry {
 }
 
 export type coordinates = [number, number];
+
+export interface FilteredCordinates {
+  coordinates: LatLngBoundsLiteral;
+  color: string;
+}

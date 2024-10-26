@@ -1,15 +1,16 @@
-import "./maps.scss";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import type { Map as LeafletMap } from "leaflet";
 import { MapContainer, Polygon, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import { geometrySelector, centerPositionSelector } from "@states/selectors";
+import { centerPositionSelector } from "@states/selectors";
+import { useSelectedCoordinates } from "@/shared/hooks";
+import "./maps.scss";
 
 export function Maps() {
   const mapRef = useRef<LeafletMap>(null);
   const position = useSelector(centerPositionSelector);
-  const geometryList = useSelector(geometrySelector);
+  const geometryList = useSelectedCoordinates();
 
   useEffect(() => {
     if (position) mapRef.current?.setView(position, 15);

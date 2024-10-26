@@ -12,8 +12,9 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { SurfaceFeature, WorkSurface } from "@shared/interfaces";
-import { setFilterFeatures } from "@states/maps.slice";
+import { setFilterFeatures } from "@states/work-surface.slice";
 import { removedFeatureSelector } from "@states/selectors";
 import { setSelectedFeature } from "@states/work-surface.slice";
 import { openRightPanel } from "@states/panel.slice";
@@ -70,6 +71,15 @@ export function ProposalBlock({ data, proposalId }: ProposalBlockProps) {
               label={`${feature.type} - ${feature.id}`}
               labelPlacement="end"
             />
+
+            <Tooltip title="Edit feature" placement="top">
+              <IconButton
+                aria-label="view"
+                onClick={() => viewFeature(feature)}
+              >
+                <DriveFileRenameOutlineIcon />
+              </IconButton>
+            </Tooltip>
 
             <Tooltip title="View feature" placement="right">
               <IconButton
