@@ -2,6 +2,7 @@
 
 .right-panel {
   @include m.side-panel;
+  overflow: hidden;
   right: var(--spacing-one);
 
   &__header {
@@ -21,8 +22,10 @@
 
   &__body {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: var(--spacing-one);
+    overflow: hidden auto;
   }
 
   &__coordinates h4 {
