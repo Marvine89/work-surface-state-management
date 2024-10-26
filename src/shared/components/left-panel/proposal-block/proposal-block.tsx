@@ -1,3 +1,5 @@
+import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Accordion,
   AccordionDetails,
@@ -7,31 +9,33 @@ import {
   ListItemButton,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useEffect, useState } from "react";
-import { WorkSurface } from "../../../interfaces";
+import { SurfaceFeature, WorkSurface } from "@shared/interfaces";
+import { setFilterFeatures } from "@states/maps.slice";
+import { removedFeatureSelector } from "@states/selectors";
+import { hasFeature } from "@/shared/utils";
+import "./proposal-block.scss";
 
 interface ProposalBlockProps {
-  index: number;
+  proposalId: number;
   data: WorkSurface;
 }
 
-export function ProposalBlock({ data, index }: ProposalBlockProps) {
+export function ProposalBlock({ data, proposalId }: ProposalBlockProps) {
+  const dispatch = useDispatch();
+  const removedFeatures = useSelector(removedFeatureSelector);
+
   const features = data.features;
+  const proposalName = `${data.type} - ${proposalId}`;
   const [expanded, setExpanded] = useState<boolean>(true);
-  const [checkboxValues, setCheckboxValues] = useState<boolean[]>([]);
 
-  useEffect(() => {
-    setCheckboxValues(features.map(() => true));
-  }, [features]);
-
-  const checkBoxChanged = (index: number) => {
-    const changedValue = !checkboxValues[index];
-
-    setCheckboxValues((values) => {
-      values[index] = changedValue;
-      return [...values];
-    });
+  const checkBoxChanged = (feature: SurfaceFeature) => {
+    dispatch(setFilterFeatures(feature));
   };
+
+  const isChecked = useCallback(
+    (feature: SurfaceFeature) => !hasFeature(removedFeatures, feature),
+    [removedFeatures]
+  );
 
   return (
     <Accordion
@@ -39,15 +43,21 @@ export function ProposalBlock({ data, index }: ProposalBlockProps) {
       onChange={() => setExpanded((value) => !value)}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        {`${data.type} - ${index}`}
+        {proposalName}
       </AccordionSummary>
       <AccordionDetails>
         {features.map((feature, i) => (
-          <ListItemButton key={i} onClick={() => checkBoxChanged(i)}>
+          <ListItemButton key={i} className="proposal-block__item-button">
             <FormControlLabel
               value="end"
-              control={<Checkbox checked={checkboxValues[i] ?? false} />}
-              label={`${feature.type} - ${i + 1}`}
+              className="proposal-block__checkbox"
+              control={
+                <Checkbox
+                  checked={isChecked(feature)}
+                  onChange={() => checkBoxChanged(feature)}
+                />
+              }
+              label={`${feature.type} - ${feature.id}`}
               labelPlacement="end"
             />
           </ListItemButton>

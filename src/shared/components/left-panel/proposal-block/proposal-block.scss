@@ -1,0 +1,10 @@
+.proposal-block {
+  &__item-button {
+    padding-right: 0 !important; // override material-ui padding
+  }
+
+  &__checkbox {
+    width: 100% !important; // override material-ui width
+    height: 100% !important; // override material-ui height
+  }
+}
