@@ -39,10 +39,32 @@ export const workSurfaceSlice = createSlice({
 
       state.removedFeatures = [...state.removedFeatures, { ...payload }];
     },
+    updateFeature: (state, action: PayloadAction<SurfaceFeature>) => {
+      const payload = action.payload;
+
+      state.workSurfaces.forEach((surface) => {
+        surface.features.forEach((f) => {
+          if (f.id === payload.id && f.parentId === payload.parentId) {
+            Object.assign(f, { ...payload });
+          }
+        });
+      });
+
+      if (
+        state.selectedFeature?.id === payload.id &&
+        state.selectedFeature?.parentId === payload.parentId
+      ) {
+        state.selectedFeature = { ...payload };
+      }
+    },
   },
 });
 
-export const { setSurfaces, setSelectedFeature, setFilterFeatures } =
-  workSurfaceSlice.actions;
+export const {
+  setSurfaces,
+  setSelectedFeature,
+  setFilterFeatures,
+  updateFeature,
+} = workSurfaceSlice.actions;
 
 export default workSurfaceSlice.reducer;

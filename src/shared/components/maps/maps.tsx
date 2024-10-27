@@ -5,7 +5,7 @@ import { MapContainer, Polygon, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { centerPositionSelector } from "@states/selectors";
 import { useSelectedCoordinates } from "@/shared/hooks";
-import "./maps.scss";
+import styles from "./maps.module.scss";
 
 export function Maps() {
   const mapRef = useRef<LeafletMap>(null);
@@ -17,9 +17,9 @@ export function Maps() {
   }, [position]);
 
   return (
-    <section className="map-block">
+    <section className={styles["map-block"]}>
       <MapContainer
-        className="map-block__map"
+        className={styles["map-block__map"]}
         center={[51.505, -0.09]}
         zoom={6}
         ref={mapRef}

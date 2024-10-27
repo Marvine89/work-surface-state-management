@@ -88,12 +88,13 @@ export function RightPanel() {
                     key={key}
                     className={styles["right-panel__properties-row"]}
                   >
-                    <div className={styles["right-panel__properties-key"]}>
+                    <span className={styles["right-panel__properties-key"]}>
                       {key}
-                    </div>
-                    <div className={styles["right-panel__properties-values"]}>
+                    </span>
+                    <span>:</span>
+                    <span className={styles["right-panel__properties-value"]}>
                       {properties[key]}
-                    </div>
+                    </span>
                   </div>
                 </div>
               ))
