@@ -1,83 +1,85 @@
-import CloseIcon from "@mui/icons-material/Close";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Chip, IconButton } from "@mui/material";
-import "./right-panel.scss";
+import { useEffect } from 'react';
+import { Chip, IconButton } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { animated, useSpring, useSpringRef, useTransition } from '@react-spring/web';
+import CloseIcon from '@mui/icons-material/Close';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { closeRightPanel } from '@states/panel.slice';
+import { featureCoordinatesSelector, selectedFeatureSelector, rightPanelSelector } from '@states/selectors';
+import styles from './right-panel.module.scss';
 
 export function RightPanel() {
-  return (
-    <aside className="right-panel">
-      <div className="right-panel__header">
-        <h3>Selected Solution</h3>
+  const dispatch = useDispatch();
+  const rightPanel = useSelector(rightPanelSelector);
+  const cordinates = useSelector(featureCoordinatesSelector);
+  const selectedFeature = useSelector(selectedFeatureSelector);
+  const properties = selectedFeature?.properties || {};
+  const propertyKeys = Object.keys(properties);
 
-        <IconButton aria-label="close" color="warning">
-          <CloseIcon className="right-panel__header-icon" />
+  const sidePanelAnimate = useSpring({
+    keys: null,
+    right: rightPanel ? 16 : -400,
+  });
+
+  const transRef = useSpringRef();
+  const transitions = useTransition(cordinates?.length, {
+    ref: transRef,
+    keys: null,
+    from: { opacity: 0, transition: 'opacity 60ms ease' },
+    enter: { opacity: 1 },
+  });
+
+  useEffect(() => {
+    transRef.start();
+  }, [cordinates?.length, transRef]);
+
+  return (
+    <animated.aside style={sidePanelAnimate} className={styles['right-panel']}>
+      <div className={styles['right-panel__header']}>
+        <h3>{selectedFeature?.type}</h3>
+
+        <IconButton aria-label="close" color="warning" onClick={() => dispatch(closeRightPanel())}>
+          <CloseIcon className={styles['right-panel__header-icon']} />
         </IconButton>
       </div>
 
-      <div className="right-panel__body">
-        <div className="right-panel__coordinates">
-          <h4>Coordinates</h4>
+      {transitions((style) => (
+        <animated.div className={styles['right-panel__body']} style={style}>
+          <div className={styles['right-panel__coordinates']}>
+            <h4>Coordinates</h4>
 
-          <div className="right-panel__coordinate-list">
-            <Chip
-              label="2.2945010662078857, 48.85822111955489"
-              color="warning"
-              variant="outlined"
-              icon={
-                <LocationOnIcon
-                  className="right-panel__coordinate-icon"
-                  fontSize="small"
+            <div className={styles['right-panel__coordinate-list']}>
+              {cordinates?.map((cord, i) => (
+                <Chip
+                  key={i}
+                  label={`${cord[0]}, ${cord[1]}`}
+                  color="warning"
+                  variant="outlined"
+                  icon={<LocationOnIcon className={styles['right-panel__coordinate-icon']} fontSize="small" />}
                 />
-              }
-            />
-            <Chip
-              label="2.2945010662078857, 48.85822111955489"
-              color="warning"
-              variant="outlined"
-              icon={
-                <LocationOnIcon
-                  className="right-panel__coordinate-icon"
-                  fontSize="small"
-                />
-              }
-            />
-            <Chip
-              label="2.2945010662078857, 48.85822111955489"
-              color="warning"
-              variant="outlined"
-              icon={
-                <LocationOnIcon
-                  className="right-panel__coordinate-icon"
-                  fontSize="small"
-                />
-              }
-            />
-          </div>
-        </div>
-
-        <div className="right-panel__properties">
-          <h4>Properties</h4>
-
-          <div className="right-panel__properties-list">
-            <div className="right-panel__properties-row">
-              <div className="right-panel__properties-key">Lorem ipsum</div>
-              <div className="right-panel__properties-value">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                eos aspernatur animi odit labore corrupti reprehenderit totam
-                soluta architecto delectus culpa.
-              </div>
-            </div>
-            <div className="right-panel__properties-row">
-              <div className="right-panel__properties-key">Lorem ipsum</div>
-              <div className="right-panel__properties-value">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-                eos aspernatur animi odit labore corrupti reprehenderit totam
-                soluta architecto delectus culpa.
-              </div>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
-    </aside>
+
+          <div className={styles['right-panel__properties']}>
+            <h4>Properties</h4>
+
+            {propertyKeys.length ? (
+              propertyKeys.map((key, i) => (
+                <div className={styles['right-panel__properties-list']} key={i}>
+                  <div key={key} className={styles['right-panel__properties-row']}>
+                    <span className={styles['right-panel__properties-key']}>{key}</span>
+                    <span>:</span>
+                    <span className={styles['right-panel__properties-value']}>{properties[key]}</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className={styles['right-panel__empty-value']}>No properties available</p>
+            )}
+          </div>
+        </animated.div>
+      ))}
+    </animated.aside>
   );
 }

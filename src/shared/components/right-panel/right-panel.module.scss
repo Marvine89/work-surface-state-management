@@ -1,0 +1,89 @@
+@use '@/assets/mixin' as m;
+
+.right-panel {
+  @include m.side-panel;
+
+  overflow: hidden;
+  right: var(--spacing-one);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-one);
+  }
+
+  &__header h3 {
+    @include m.open-sans;
+  }
+
+  &__header-icon {
+    color: var(--color-basic-neutral-white);
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--spacing-one);
+    overflow: hidden auto;
+  }
+
+  &__coordinates h4 {
+    @include m.open-sans;
+  }
+
+  &__coordinate-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-half);
+    padding: var(--spacing-one) 0;
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-one);
+  }
+
+  &__properties h4 {
+    @include m.open-sans;
+  }
+
+  &__properties-list {
+    display: grid;
+    gap: var(--spacing-one);
+  }
+
+  &__properties-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-one);
+
+    span {
+      color: var(--color-basic-neutral-white);
+    }
+  }
+
+  &__properties-key {
+    @include m.open-sans;
+
+    font-weight: 200;
+    flex: 0.7;
+    text-transform: capitalize;
+  }
+
+  &__properties-value {
+    @include m.open-sans;
+
+    font-weight: 200;
+    flex: 1;
+  }
+
+  &__empty-value {
+    @include m.open-sans;
+
+    font-weight: 200;
+    margin: var(--spacing-half) 0;
+  }
+}
