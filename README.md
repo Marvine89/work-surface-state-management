@@ -22,6 +22,7 @@ Current libraries:
 - [formik](https://formik.org/docs/overview) for form submition
 - [msw](https://mswjs.io/) for local proxy mock data
 - [husky](https://typicode.github.io/husky/) for precommit hooks
+- [vitest](https://vitest.dev/) as testing framework
 
 ## Run the application
 

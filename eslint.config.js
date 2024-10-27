@@ -8,7 +8,14 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules', 'public/mockServiceWorker.js', 'eslint.config.js', 'vite.config.ts'],
+    ignores: [
+      'dist',
+      'node_modules',
+      'public/mockServiceWorker.js',
+      'eslint.config.js',
+      'vite.config.ts',
+      'vitest.setup.ts',
+    ],
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
