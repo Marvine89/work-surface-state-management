@@ -2,7 +2,7 @@
 
 ### Written in React + TypeScript + Vite with ❤️
 
-This is an example of the work surface using state management to manage data events from different component. 
+This is an example of the work surface using state management to manage data events from different component.
 
 ```sh
  > git clone https://github.com/Marvine89/work-surface-state-management.git

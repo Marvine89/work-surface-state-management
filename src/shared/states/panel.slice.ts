@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface panelState {
   rightPanelOpen: boolean;
@@ -9,7 +9,7 @@ const initialState: panelState = {
 };
 
 export const PanelSlice = createSlice({
-  name: "maps",
+  name: 'maps',
   initialState,
   reducers: {
     openRightPanel: (state) => {

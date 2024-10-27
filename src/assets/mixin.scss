@@ -12,10 +12,11 @@
   flex-direction: column;
   padding: var(--spacing-one-and-half) var(--spacing-one);
   box-sizing: border-box;
-  box-shadow: 0 3px 3px -2px rgb(0 0 0 / 20%), 0 3px 4px 0 rgb(0 0 0 / 14%),
+  box-shadow:
+    0 3px 3px -2px rgb(0 0 0 / 20%),
+    0 3px 4px 0 rgb(0 0 0 / 14%),
     0 1px 8px 0 rgb(0 0 0 / 12%);
-  background-image: linear-gradient(rgb(255 255 255 / 8.2%),
-  rgb(255 255 255 / 8.2%));
+  background-image: linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%));
 }
 
 @mixin open-sans($weight: 400, $color: var(--color-basic-neutral-white)) {

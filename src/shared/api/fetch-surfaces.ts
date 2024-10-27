@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { WorkSurface, WorkSurfaceResponse } from "../interfaces";
-import { API_QUERIES, CACHE_TIMEOUT, MAP_COLORS } from "../utils";
-import { httpClient } from "./http-client";
+import { useQuery } from '@tanstack/react-query';
+import { WorkSurface, WorkSurfaceResponse } from '../interfaces';
+import { API_QUERIES, CACHE_TIMEOUT, MAP_COLORS } from '../utils';
+import { httpClient } from './http-client';
 
 function fetchWorkSurface() {
   return httpClient
-    .get("work-surfaces")
+    .get('work-surfaces')
     .json<WorkSurfaceResponse[]>()
     .then((data) => addFeaturesIds(data));
 }
@@ -23,7 +23,7 @@ function addFeaturesIds(workSurfaces: WorkSurfaceResponse[]): WorkSurface[] {
           ...feature,
           geometry: {
             ...feature.geometry,
-            color: MAP_COLORS[colorId++] ?? "#000000",
+            color: MAP_COLORS[colorId++] ?? '#000000',
           },
         };
       }),
