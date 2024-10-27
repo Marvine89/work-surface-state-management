@@ -50,3 +50,5 @@ mockServiceWorker.js
 # i18next-parser old catalogs
 *_old.json
 .eslintcache
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo

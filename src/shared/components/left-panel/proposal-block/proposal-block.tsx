@@ -47,7 +47,7 @@ export function ProposalBlock(props: ProposalBlockProps) {
   };
 
   return (
-    <Accordion expanded={expanded} onChange={() => setExpanded((value) => !value)}>
+    <Accordion expanded={expanded} onChange={() => setExpanded((value) => !value)} data-testid="proposal-bock">
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>{data.type}</AccordionSummary>
       <AccordionDetails>
         {features.map((feature, i) => (
@@ -58,6 +58,7 @@ export function ProposalBlock(props: ProposalBlockProps) {
               control={<Checkbox checked={isChecked(feature)} onChange={() => checkBoxChanged(feature)} />}
               label={feature.type}
               labelPlacement="end"
+              data-testid="feature-name"
             />
 
             <Tooltip title="Edit feature" placement="top">
