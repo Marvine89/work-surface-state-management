@@ -1,50 +1,38 @@
-# React + TypeScript + Vite
+# WORK SURFACE - STATE MANAGEMENT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Written in React + TypeScript + Vite with ❤️
 
-Currently, two official plugins are available:
+This is an example of the work surface using state management to manage data events from different component. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+ > git clone https://github.com/Marvine89/work-surface-state-management.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Current libraries:
+
+- [@reduxjs/toolkit](https://redux-toolkit.js.org/) for state management
+- [leaflet](https://leafletjs.com/) and [react-leaflet](https://react-leaflet.js.org/) for maps display
+- [@tanstack/react-query](https://tanstack.com/query) for data fetching and async states
+- [@mui/material](https://mui.com/) as the design system
+- [ky](https://github.com/sindresorhus/ky) for lighweight API request
+- [formik](https://formik.org/docs/overview) for form submition
+- [msw](https://mswjs.io/) for local proxy mock data
+
+## Run the application
 
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+> npm i
+> npm run dev
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Run tests
+
+```js
+> npm run test
+```
+
+## Run littings
+
+```js
+> npm run lint
 ```
