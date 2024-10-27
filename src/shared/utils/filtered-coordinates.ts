@@ -1,9 +1,6 @@
 import type { LatLngBoundsLiteral } from 'leaflet';
 import { FilteredCordinates, SurfaceFeature, WorkSurface } from '../interfaces';
-
-export function hasFeature(features: SurfaceFeature[], feature: SurfaceFeature): boolean {
-  return features.some(({ id, parentId }) => id === feature.id && parentId === feature.parentId);
-}
+import { hasFeature } from './has-feature';
 
 export function getFilteredCoordinates(
   workSurfaces: WorkSurface[],
