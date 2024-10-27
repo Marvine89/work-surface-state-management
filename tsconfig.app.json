@@ -29,5 +29,5 @@
       "@tests/*": ["src/shared/utils/tests/*"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "include": ["src", "__tests__"],
 }
