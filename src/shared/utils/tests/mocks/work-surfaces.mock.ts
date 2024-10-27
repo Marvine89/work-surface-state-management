@@ -1,52 +1,13 @@
 import { WorkSurface } from '../../../interfaces';
+import { FEATURE_1_MOCK, FEATURE_2_MOCK } from './features.mock';
 
-export const WORK_SURFACES: WorkSurface[] = [
+export const WORK_SURFACES_MOCK: WorkSurface[] = [
   {
     type: 'Work Surface 1',
-    features: [
-      {
-        type: 'Feature 1',
-        id: 1,
-        parentId: 1,
-        properties: { name: 'Feature 1', description: 'Feature 1 description' },
-        geometry: {
-          type: 'Polygon',
-          color: 'red',
-          coordinates: [
-            [
-              [0, 0],
-              [0, 1],
-              [1, 1],
-              [1, 0],
-              [0, 0],
-            ],
-          ],
-        },
-      },
-    ],
+    features: [FEATURE_1_MOCK],
   },
   {
     type: 'Work Surface 2',
-    features: [
-      {
-        type: 'Feature 1',
-        id: 1,
-        parentId: 2,
-        properties: { name: 'Feature 1', description: 'Feature 1 description' },
-        geometry: {
-          type: 'Polygon',
-          color: 'red',
-          coordinates: [
-            [
-              [0, 0],
-              [0, 1],
-              [1, 1],
-              [1, 0],
-              [0, 0],
-            ],
-          ],
-        },
-      },
-    ],
+    features: [FEATURE_2_MOCK],
   },
-];
+] as const;

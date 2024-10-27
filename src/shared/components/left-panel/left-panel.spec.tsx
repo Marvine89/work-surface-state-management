@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { LeftPanel } from './left-panel';
 import { useFetchWorkSurfaceStore } from '@shared/hooks';
 import { WorkSurface } from '@shared/interfaces';
-import { PRELOADED_STATES, WORK_SURFACES } from '@tests/mocks';
+import { PRELOADED_STATES, WORK_SURFACES_MOCK } from '@tests/mocks';
 import { renderWithProviders } from '@tests/render-with-providers';
 
 interface MockUseFetchWorkSurfaceStore {
@@ -43,7 +43,7 @@ describe('left-panel', () => {
   });
 
   it('should render proposal block when request is successfull', () => {
-    vi.mocked(useFetchWorkSurfaceStore).mockReturnValue({ ...mockUseFetchWorkSurfaceStore, data: WORK_SURFACES });
+    vi.mocked(useFetchWorkSurfaceStore).mockReturnValue({ ...mockUseFetchWorkSurfaceStore, data: WORK_SURFACES_MOCK });
 
     renderWithProviders(<LeftPanel />, {
       preloadedState: PRELOADED_STATES,
@@ -55,7 +55,7 @@ describe('left-panel', () => {
   });
 
   it('should render feature names when request is successfull', () => {
-    vi.mocked(useFetchWorkSurfaceStore).mockReturnValue({ ...mockUseFetchWorkSurfaceStore, data: WORK_SURFACES });
+    vi.mocked(useFetchWorkSurfaceStore).mockReturnValue({ ...mockUseFetchWorkSurfaceStore, data: WORK_SURFACES_MOCK });
 
     renderWithProviders(<LeftPanel />, {
       preloadedState: PRELOADED_STATES,
@@ -63,6 +63,6 @@ describe('left-panel', () => {
 
     const featuresNames = screen.getAllByTestId('feature-name');
     expect(featuresNames).toHaveLength(2);
-    expect(featuresNames[0]).toHaveTextContent(WORK_SURFACES[0].features[0].type);
+    expect(featuresNames[0]).toHaveTextContent(WORK_SURFACES_MOCK[0].features[0].type);
   });
 });
