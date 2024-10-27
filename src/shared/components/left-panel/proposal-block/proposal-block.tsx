@@ -31,9 +31,8 @@ export function ProposalBlock(props: ProposalBlockProps) {
   const dispatch = useDispatch();
   const removedFeatures = useSelector(removedFeatureSelector);
 
-  const { data, proposalId, openEditModal } = props;
+  const { data, openEditModal } = props;
   const features = data.features;
-  const proposalName = `${data.type} - ${proposalId}`;
   const [expanded, setExpanded] = useState<boolean>(true);
 
   const checkBoxChanged = (feature: SurfaceFeature) => {
@@ -49,7 +48,7 @@ export function ProposalBlock(props: ProposalBlockProps) {
 
   return (
     <Accordion expanded={expanded} onChange={() => setExpanded((value) => !value)}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>{proposalName}</AccordionSummary>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>{data.type}</AccordionSummary>
       <AccordionDetails>
         {features.map((feature, i) => (
           <ListItemButton key={i} className={styles['item-button']}>
@@ -57,7 +56,7 @@ export function ProposalBlock(props: ProposalBlockProps) {
               value="end"
               className={styles['checkbox']}
               control={<Checkbox checked={isChecked(feature)} onChange={() => checkBoxChanged(feature)} />}
-              label={`${feature.type} - ${feature.id}`}
+              label={feature.type}
               labelPlacement="end"
             />
 

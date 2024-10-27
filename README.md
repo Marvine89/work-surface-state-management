@@ -21,6 +21,7 @@ Current libraries:
 - [ky](https://github.com/sindresorhus/ky) for lighweight API request
 - [formik](https://formik.org/docs/overview) for form submition
 - [msw](https://mswjs.io/) for local proxy mock data
+- [husky](https://typicode.github.io/husky/) for precommit hooks
 
 ## Run the application
 

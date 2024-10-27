@@ -13,7 +13,6 @@ export function RightPanel() {
   const rightPanel = useSelector(rightPanelSelector);
   const cordinates = useSelector(featureCoordinatesSelector);
   const selectedFeature = useSelector(selectedFeatureSelector);
-  const featureTitle = `${selectedFeature?.type} - ${selectedFeature?.id}`;
   const properties = selectedFeature?.properties || {};
   const propertyKeys = Object.keys(properties);
 
@@ -37,7 +36,7 @@ export function RightPanel() {
   return (
     <animated.aside style={sidePanelAnimate} className={styles['right-panel']}>
       <div className={styles['right-panel__header']}>
-        <h3>{featureTitle}</h3>
+        <h3>{selectedFeature?.type}</h3>
 
         <IconButton aria-label="close" color="warning" onClick={() => dispatch(closeRightPanel())}>
           <CloseIcon className={styles['right-panel__header-icon']} />

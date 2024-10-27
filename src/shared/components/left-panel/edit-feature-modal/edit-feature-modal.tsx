@@ -46,7 +46,7 @@ export function EditFeatureModal({ feature, onClose }: EditFeatureModalProps) {
     <Modal open={!!feature} onClose={onClose}>
       <Box className={styles['edit-feat-modal']}>
         <div className={styles['modal-header']}>
-          <h3 className={styles['feature-title']}>{`${feature?.type} - ${feature?.id}`}</h3>
+          <h3 className={styles['feature-title']}>{feature?.type}</h3>
           <IconButton aria-label="close" color="warning" onClick={onClose}>
             <CloseIcon className={styles['header-icon']} />
           </IconButton>
