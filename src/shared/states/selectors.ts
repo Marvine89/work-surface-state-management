@@ -1,6 +1,10 @@
-import type { LatLngBoundsLiteral, LatLngTuple } from "leaflet";
+import type { LatLngTuple } from "leaflet";
 import { AppState } from "./store";
-import { hasFeature } from "../utils";
+
+export const rightPanelSelector = (app: AppState) => app.panel.rightPanelOpen;
+
+export const workSurfacesSelector = (app: AppState) =>
+  app.workSurface.workSurfaces;
 
 export const centerPositionSelector = (app: AppState) => {
   return <LatLngTuple | undefined>(
@@ -11,25 +15,10 @@ export const centerPositionSelector = (app: AppState) => {
 };
 
 export const removedFeatureSelector = (app: AppState) =>
-  app.map.removedFeatures;
+  app.workSurface.removedFeatures;
 
-export const geometrySelector = (app: AppState) => {
-  return app.workSurface.workSurfaces.flatMap(({ features }) => {
-    return features
-      .filter((feature) => {
-        return !hasFeature(app.map.removedFeatures, feature);
-      })
-      .map(({ geometry }) => ({
-        coordinates: <LatLngBoundsLiteral>geometry.coordinates[0],
-        color: geometry.color,
-      }));
-  });
-};
-
-export const rightPanelSelector = (app: AppState) => app.panel.rightPanelOpen;
+export const selectedFeatureSelector = (app: AppState) =>
+  app.workSurface.selectedFeature;
 
 export const featureCoordinatesSelector = (app: AppState) =>
   app.workSurface.selectedFeature?.geometry.coordinates[0];
-
-export const featurePropertySelector = (app: AppState) =>
-  app.workSurface.selectedFeature?.properties ?? {};
