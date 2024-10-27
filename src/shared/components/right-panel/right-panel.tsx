@@ -12,7 +12,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { closeRightPanel } from "@states/panel.slice";
 import {
   featureCoordinatesSelector,
-  featurePropertySelector,
+  selectedFeatureSelector,
   rightPanelSelector,
 } from "@states/selectors";
 import styles from "./right-panel.module.scss";
@@ -21,7 +21,9 @@ export function RightPanel() {
   const dispatch = useDispatch();
   const rightPanel = useSelector(rightPanelSelector);
   const cordinates = useSelector(featureCoordinatesSelector);
-  const properties = useSelector(featurePropertySelector) || {};
+  const selectedFeature = useSelector(selectedFeatureSelector);
+  const featureTitle = `${selectedFeature?.type} - ${selectedFeature?.id}`;
+  const properties = selectedFeature?.properties || {};
   const propertyKeys = Object.keys(properties);
 
   const sidePanelAnimate = useSpring({
@@ -44,7 +46,7 @@ export function RightPanel() {
   return (
     <animated.aside style={sidePanelAnimate} className={styles["right-panel"]}>
       <div className={styles["right-panel__header"]}>
-        <h3>Selected Solution</h3>
+        <h3>{featureTitle}</h3>
 
         <IconButton
           aria-label="close"

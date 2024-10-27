@@ -1,6 +1,8 @@
 import type { LatLngTuple } from "leaflet";
 import { AppState } from "./store";
 
+export const rightPanelSelector = (app: AppState) => app.panel.rightPanelOpen;
+
 export const workSurfacesSelector = (app: AppState) =>
   app.workSurface.workSurfaces;
 
@@ -15,10 +17,8 @@ export const centerPositionSelector = (app: AppState) => {
 export const removedFeatureSelector = (app: AppState) =>
   app.workSurface.removedFeatures;
 
-export const rightPanelSelector = (app: AppState) => app.panel.rightPanelOpen;
+export const selectedFeatureSelector = (app: AppState) =>
+  app.workSurface.selectedFeature;
 
 export const featureCoordinatesSelector = (app: AppState) =>
   app.workSurface.selectedFeature?.geometry.coordinates[0];
-
-export const featurePropertySelector = (app: AppState) =>
-  app.workSurface.selectedFeature?.properties;
