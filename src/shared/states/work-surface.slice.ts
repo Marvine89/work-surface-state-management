@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { SurfaceFeature, WorkSurface } from "../interfaces";
-import { hasFeature } from "../utils";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { SurfaceFeature, WorkSurface } from '../interfaces';
+import { hasFeature } from '../utils';
 
 export interface WorkSurfaceState {
   workSurfaces: WorkSurface[];
@@ -16,7 +16,7 @@ const initialState: WorkSurfaceState = {
 };
 
 export const workSurfaceSlice = createSlice({
-  name: "work-surface",
+  name: 'work-surface',
   initialState,
   reducers: {
     setSurfaces: (state, action: PayloadAction<WorkSurface[]>) => {
@@ -30,11 +30,9 @@ export const workSurfaceSlice = createSlice({
 
       // Remove feature from removedFeatures if it exists
       if (hasFeature(state.removedFeatures, action.payload)) {
-        state.removedFeatures = state.removedFeatures.filter(
-          ({ id, parentId }) => {
-            return !(id === payload.id && parentId === payload.parentId);
-          }
-        );
+        state.removedFeatures = state.removedFeatures.filter(({ id, parentId }) => {
+          return !(id === payload.id && parentId === payload.parentId);
+        });
         return;
       }
 
@@ -53,21 +51,13 @@ export const workSurfaceSlice = createSlice({
       });
 
       // Update selected feature if it's the same feature
-      if (
-        state.selectedFeature?.id === payload.id &&
-        state.selectedFeature?.parentId === payload.parentId
-      ) {
+      if (state.selectedFeature?.id === payload.id && state.selectedFeature?.parentId === payload.parentId) {
         state.selectedFeature = { ...payload };
       }
     },
   },
 });
 
-export const {
-  setSurfaces,
-  setSelectedFeature,
-  setFilterFeatures,
-  updateFeature,
-} = workSurfaceSlice.actions;
+export const { setSurfaces, setSelectedFeature, setFilterFeatures, updateFeature } = workSurfaceSlice.actions;
 
 export default workSurfaceSlice.reducer;

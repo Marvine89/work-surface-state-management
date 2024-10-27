@@ -1,4 +1,4 @@
-import type { LatLngBoundsLiteral } from "leaflet";
+import type { LatLngBoundsLiteral } from 'leaflet';
 
 export interface WorkSurfaceResponse {
   type: string;

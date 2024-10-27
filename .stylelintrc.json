@@ -1,0 +1,73 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "scss/selector-no-redundant-nesting-selector": null,
+    "no-duplicate-selectors": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreProperties": ["composes", "font-family"],
+        "camelCaseSvgKeywords": true
+      }
+    ],
+    "selector-max-id": 1,
+    "max-nesting-depth": [
+      2,
+      {
+        "ignore": ["pseudo-classes", "blockless-at-rules"]
+      }
+    ],
+    "import-notation": "string",
+    "declaration-property-value-disallowed-list": {
+      "border": ["0"],
+      "border-top": ["0"],
+      "border-right": ["0"],
+      "border-bottom": ["0"],
+      "border-left": ["0"]
+    },
+    "selector-no-vendor-prefix": [
+      true,
+      {
+        "ignoreSelectors": ["::-webkit-input-placeholder", "/-moz-.*/", "/-ms-input-.*/"]
+      }
+    ],
+    "selector-class-pattern": [
+      "^[a-z]([a-z0-9]*)(-[a-z0-9]+)*(?:__([a-z0-9]+(-[a-z0-9]+)*))?(?:--([a-z0-9]+(-[a-z0-9]+)*))?$",
+      {
+        "resolveNestedSelectors": true,
+        "message": "Class selectors should be in kebab case, BEM convention is also allowed (e.g., .block, .block__element, .block--modifier, .block__element--modifier)"
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["attribute"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    },
+    {
+      "files": ["**/*.module.scss"],
+      "rules": {
+        "selector-max-type": [
+          0,
+          {
+            "ignore": ["child", "descendant", "compounded"],
+            "message": "The selector \"%s\" is not pure. Use class or ID selectors only."
+          }
+        ],
+        "property-no-unknown": [
+          true,
+          {
+            "ignoreProperties": ["composes"]
+          }
+        ]
+      }
+    }
+  ]
+}

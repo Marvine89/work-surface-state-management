@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import type { Map as LeafletMap } from "leaflet";
-import { MapContainer, Polygon, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import { centerPositionSelector } from "@states/selectors";
-import { useSelectedCoordinates } from "@/shared/hooks";
-import styles from "./maps.module.scss";
+import { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import type { Map as LeafletMap } from 'leaflet';
+import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { centerPositionSelector } from '@states/selectors';
+import { useSelectedCoordinates } from '@/shared/hooks';
+import styles from './maps.module.scss';
 
 export function Maps() {
   const mapRef = useRef<LeafletMap>(null);
@@ -17,13 +17,8 @@ export function Maps() {
   }, [position]);
 
   return (
-    <section className={styles["map-block"]}>
-      <MapContainer
-        className={styles["map-block__map"]}
-        center={[51.505, -0.09]}
-        zoom={6}
-        ref={mapRef}
-      >
+    <section className={styles['map-block']}>
+      <MapContainer className={styles['map-block__map']} center={[51.505, -0.09]} zoom={6} ref={mapRef}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

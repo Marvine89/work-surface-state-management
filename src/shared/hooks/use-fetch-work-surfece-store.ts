@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { workSurfacesSelector } from "../states/selectors";
-import { useFetchWorkSurfaceQuery } from "../api";
-import { useEffect } from "react";
-import { setSurfaces } from "../states/work-surface.slice";
+import { useDispatch, useSelector } from 'react-redux';
+import { workSurfacesSelector } from '../states/selectors';
+import { useFetchWorkSurfaceQuery } from '../api';
+import { useEffect } from 'react';
+import { setSurfaces } from '../states/work-surface.slice';
 
 export const useFetchWorkSurfaceStore = () => {
   const dispatch = useDispatch();

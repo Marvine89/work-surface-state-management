@@ -12,7 +12,7 @@ body,
 }
 
 * {
-  font-family: "Roboto", serif;
+  font-family: Roboto, serif;
   font-style: normal;
 }
 
@@ -30,22 +30,18 @@ h5 {
   --color-basic-neutral-50: #7c7c7c;
   --color-basic-neutral-60: #959595;
   --color-basic-neutral-70: #b0b0b0;
-  --color-basic-neutral-black: #000000;
-  --color-basic-neutral-white: #ffffff;
-
+  --color-basic-neutral-black: #000;
+  --color-basic-neutral-white: #fff;
   --color-basic-blue-60: #7f93d4;
   --color-basic-blue-70: #9eafe4;
   --color-basic-blue-80: #bbc6eb;
-
   --color-basic-green-40: #0e7b3b;
   --color-basic-green-50: #1e973f;
   --color-basic-green-60: #39b44a;
   --color-basic-green-70: #74c681;
-
   --color-basic-red-50: #e72827;
   --color-basic-red-60: #fe5653;
   --color-basic-red-70: #fc8a82;
-
   --spacing-half: 0.5rem;
   --spacing-three-quarters: 0.75rem;
   --spacing-one: 1rem;

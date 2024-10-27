@@ -49,3 +49,4 @@ mockServiceWorker.js
 
 # i18next-parser old catalogs
 *_old.json
+.eslintcache
