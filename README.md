@@ -8,6 +8,10 @@ This is an example of the work surface using state management to manage data eve
  > git clone https://github.com/Marvine89/work-surface-state-management.git
 ```
 
+![Alt text](public/images/screenshot-1.png?raw=true)
+
+![Alt text](public/images/screenshot-2.png?raw=true)
+
 Current libraries:
 
 - [@reduxjs/toolkit](https://redux-toolkit.js.org/) for state management
