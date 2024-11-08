@@ -6,13 +6,11 @@ import { hasFeature } from '../utils';
 export interface WorkSurfaceState {
   workSurfaces: WorkSurface[];
   removedFeatures: SurfaceFeature[];
-  selectedFeature: SurfaceFeature | null;
 }
 
 const initialState: WorkSurfaceState = {
   workSurfaces: [],
   removedFeatures: [],
-  selectedFeature: null,
 };
 
 export const workSurfaceSlice = createSlice({
@@ -21,9 +19,6 @@ export const workSurfaceSlice = createSlice({
   reducers: {
     setSurfaces: (state, action: PayloadAction<WorkSurface[]>) => {
       state.workSurfaces = [...action.payload];
-    },
-    setSelectedFeature: (state, action: PayloadAction<SurfaceFeature>) => {
-      state.selectedFeature = { ...action.payload };
     },
     setFilterFeatures: (state, action: PayloadAction<SurfaceFeature>) => {
       const payload = action.payload;
@@ -38,26 +33,9 @@ export const workSurfaceSlice = createSlice({
 
       state.removedFeatures = [...state.removedFeatures, { ...payload }];
     },
-    updateFeature: (state, action: PayloadAction<SurfaceFeature>) => {
-      const payload = action.payload;
-
-      // Update feature in workSurfaces
-      state.workSurfaces.forEach((surface) => {
-        surface.features.forEach((f) => {
-          if (f.id === payload.id && f.parentId === payload.parentId) {
-            Object.assign(f, { ...payload });
-          }
-        });
-      });
-
-      // Update selected feature if it's the same feature
-      if (state.selectedFeature?.id === payload.id && state.selectedFeature?.parentId === payload.parentId) {
-        state.selectedFeature = { ...payload };
-      }
-    },
   },
 });
 
-export const { setSurfaces, setSelectedFeature, setFilterFeatures, updateFeature } = workSurfaceSlice.actions;
+export const { setSurfaces, setFilterFeatures } = workSurfaceSlice.actions;
 
 export default workSurfaceSlice.reducer;

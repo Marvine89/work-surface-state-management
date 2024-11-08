@@ -6,6 +6,20 @@
   overflow: hidden;
   left: var(--spacing-one);
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-one-and-half) var(--spacing-two);
+    background-color: var(--color-basic-neutral-black);
+  }
+
+  &__header-right {
+    display: flex;
+    gap: var(--spacing-one);
+    align-items: center;
+  }
+
   &__title {
     @include m.open-sans;
 

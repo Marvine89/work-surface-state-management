@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import PanelReducer from './panel.slice';
+import saveGeometry from './saved-geometry.slice';
 import workSurfaceReducer from './work-surface.slice';
 
 export const appReducer = combineReducers({
   panel: PanelReducer,
   workSurface: workSurfaceReducer,
+  saveGeometry: saveGeometry,
 });
 
 export function appStore(preloadedState?: Partial<RootState>) {
