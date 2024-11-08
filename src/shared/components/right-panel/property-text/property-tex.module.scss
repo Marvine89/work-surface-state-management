@@ -1,0 +1,25 @@
+@use '@/assets/mixin' as m;
+
+.properties {
+  display: flex;
+  align-items: flex-start;
+
+  span {
+    color: var(--color-basic-neutral-white);
+  }
+}
+
+.title {
+  @include m.open-sans;
+
+  font-weight: 200;
+  flex: 0.8;
+  text-transform: capitalize;
+}
+
+.value {
+  @include m.open-sans;
+
+  font-weight: 200;
+  flex: 1;
+}
