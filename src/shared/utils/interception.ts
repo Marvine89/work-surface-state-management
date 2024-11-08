@@ -2,7 +2,7 @@ import { intersect } from '@turf/intersect';
 import { Coordinates } from '../interfaces';
 import { featureCollection, polygon } from '@turf/helpers';
 
-export const intercectionHelper = (latlong: Coordinates[][][]) => {
+export const intersectHelper = (latlong: Coordinates[][][]) => {
   if (latlong.length === 0) return [];
 
   const poly = latlong.map((cord) => polygon(cord));
