@@ -45,6 +45,12 @@
     }
   }
 
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-one);
+  }
+
   &__properties h4 {
     @include m.open-sans;
   }
