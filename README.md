@@ -1,16 +1,20 @@
-# WORK SURFACE - STATE MANAGEMENT
+# WORK SURFACE WITH UNION/INTERSECT AND STATE MANAGEMENT
 
 ### Written in React + TypeScript + Vite with ❤️
 
-This is an example of the work surface using state management to manage data events from different component.
+This is an example of the work surface with union/intersect and state management. Feel free to use it as you want
 
 ```sh
  > git clone https://github.com/Marvine89/work-surface-state-management.git
 ```
 
+![Alt text](public/images/screenshot-2.png?raw=true)
+
 ![Alt text](public/images/screenshot-1.png?raw=true)
 
-![Alt text](public/images/screenshot-2.png?raw=true)
+![Alt text](public/images/screenshot-3.png?raw=true)
+
+![Alt text](public/images/screenshot-4.png?raw=true)
 
 Current libraries:
 

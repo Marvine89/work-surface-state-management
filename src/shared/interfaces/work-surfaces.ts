@@ -1,5 +1,3 @@
-import type { LatLngBoundsLiteral } from 'leaflet';
-
 export interface WorkSurfaceResponse {
   type: string;
   features: SurfaceFeatureResponse[];
@@ -27,12 +25,15 @@ export interface SurfaceFeature {
 export interface SurfaceGeometry {
   type: string;
   color: string;
-  coordinates: coordinates[][];
+  coordinates: Coordinates[][];
 }
 
-export type coordinates = [number, number];
+export type Coordinates = [number, number];
 
-export interface FilteredCordinates {
-  coordinates: LatLngBoundsLiteral;
-  color: string;
+export type PolygoneMode = 'intersection' | 'union';
+
+export interface SavedPolygonState {
+  name: string;
+  coord: Coordinates[][];
+  description?: string;
 }

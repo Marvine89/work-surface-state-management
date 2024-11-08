@@ -1,0 +1,16 @@
+.item-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+}
+
+.empty-text {
+  text-align: center;
+}
+
+.checkbox {
+  flex: 1;
+  width: 100% !important; // override material-ui width
+  height: 100% !important; // override material-ui height
+  margin-right: 0 !important; // override material-ui margin
+}
