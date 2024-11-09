@@ -17,6 +17,7 @@ export function useSelectedCoordinates() {
     if (!polygoneMode) return setGeometryList(filteredCoords.map((coords) => coords[0]));
 
     const geometryList = polygoneMode === 'union' ? unionHelper(filteredCoords) : intersectHelper(filteredCoords);
+
     setGeometryList(geometryList);
     dispatch(setDisplayedPolygon(geometryList));
   }, [workSurfaces, removedFeature, setGeometryList, polygoneMode, dispatch]);

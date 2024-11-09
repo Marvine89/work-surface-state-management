@@ -10,7 +10,6 @@ export interface WorkSurface {
 
 export interface SurfaceFeatureResponse {
   type: string;
-  properties: Record<string, string>;
   geometry: SurfaceGeometry;
 }
 
@@ -18,7 +17,6 @@ export interface SurfaceFeature {
   type: string;
   id: number;
   parentId: number;
-  properties: Record<string, string>;
   geometry: SurfaceGeometry;
 }
 
