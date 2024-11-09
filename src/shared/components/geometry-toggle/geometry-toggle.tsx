@@ -45,12 +45,12 @@ export function GeometryToggle() {
           </Button>
         </Tooltip>
 
-        <Tooltip title="Switch to interception view" placement="bottom">
+        <Tooltip title="Switch to intersect view" placement="bottom">
           <Button
             onClick={() => toggleGeometryMode('intersection')}
             className={isIntersectionPolygon ? styles['active'] : ''}
           >
-            Interception
+            Intersect
           </Button>
         </Tooltip>
       </ButtonGroup>
