@@ -3,9 +3,9 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "declaration": true,
-    "types": []
+    "types": [],
   },
-  "include": ["src/**/*.ts", "**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "**/*.d.ts"],
   "exclude": [
       "src/**/*.test.ts",
       "src/**/*.spec.ts",
