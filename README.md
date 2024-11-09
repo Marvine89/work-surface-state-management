@@ -4,6 +4,8 @@
 
 This is an example of the work surface with union/intersect and state management. Feel free to use it as you want
 
+### [Demo link ](https://672ecab0a9cb37980aeca3da--visionary-chaja-1e64c7.netlify.app/)
+
 ```sh
  > git clone https://github.com/Marvine89/work-surface-state-management.git
 ```
