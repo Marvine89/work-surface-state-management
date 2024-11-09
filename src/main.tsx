@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { appStore } from '@states/store';
 
 async function prepareMock() {
-  if (process.env.NODE_ENV !== 'development') return;
   const { initMockAPI } = await import('./mocks/server');
   return initMockAPI();
 }
